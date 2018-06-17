@@ -1,5 +1,5 @@
  <?php 
- $to= "marco.acquaviva@ilmaggiordomodelweb.it"; $subject = "Preventivo";
+ $to= "youremail@server.it"; $subject = "Budget";
  /*dichiarazioni variabili*/
  /*html*/
  $colore_sfondo="#fff";
@@ -32,19 +32,19 @@
  $intestazioni  = "MIME-Version: 1.0\r\n";
  $intestazioni .= "Content-type: text/html; charset=iso-8859-1\r\n";
  /*intestazioni per il mittente*/
- $intestazioni .= "From: La rosa service <info@larosaservice.it>\r\n";
+ $intestazioni .= "From: La rosa service <info@exemple.it>\r\n";
   
  /*messaggio*/
 
  
  $message="<html><head><title></title></head><body bgcolor=\"" . $colore_sfondo . "\">"; 
  /*header*/
- $message= '<div style="margin: 72px 0;"> <a href="http://www.larosaservice.it/" id="gkLogo">
-        <img src="http://www.larosaservice.it/images/Logo-LaRosa.png" alt="Catering la Rosa Service | Location per un matrimonio perfetto">
+ $message= '<div style="margin: 72px 0;"> <a href="http://www.exemple.it/" id="gkLogo">
+        <img src="http://www.exemple.it/images/Logo-LaRosa.png" alt="exemple | Location per un matrimonio perfetto">
      </a> </div>';
  /*body*/
  /*intestazione*/
- $message.="<div><font face=\"" . $font . "\" size=\"" . $font_size . "\" colore=\"" . $colore_testo . "\">Questa email ti &egrave stata inviata dal sito La Rosa Service. <br> L'utente  " . $_POST['nome'] . "&nbsp;" . $_POST['cognome'] . " (a cui puoi rispondere a: " . $_POST['email'] . ") . <br> Telefeno: &nbsp;" . $_POST['cell']; "</a> </font> </div>";
+ $message.="<div><font face=\"" . $font . "\" size=\"" . $font_size . "\" colore=\"" . $colore_testo . "\">Questa email ti &egrave stata inviata dal sito exemple. <br> L'utente  " . $_POST['nome'] . "&nbsp;" . $_POST['cognome'] . " (a cui puoi rispondere a: " . $_POST['email'] . ") . <br> Telefeno: &nbsp;" . $_POST['cell']; "</a> </font> </div>";
  /*step2*/
  $message.='<div><p> Il costo della location &egrave di ' . $_REQUEST["h_valore"] . "&euro; </p><br><p> La data scelta &egrave" . $_REQUEST['data'] . "</p> </div>";
  /*step3*/
@@ -56,8 +56,8 @@
  /*step6*/
  $message.= '<div><p> Il numero degli invitati &egrave di : ' . $_REQUEST['h_invitati'] . "</p><br><p> Il totale &egrave di " . $_REQUEST['h_totale'] . " &euro;</p></div><br>";
 
- $message.= '<div style=" text-align: center; margin: 85px 0; width: 100%; color:#3c3b3b;background:#e78531;line-height: 2;">© 2015 La Rosa Service. All Rights Reserved. La Rosa service s.r.l.<br>
-via B. Cellini,  25016 Ghedi (BS) -  P. IVA e C.F. 02879710982 -  Tel: 3464125498 - Fax: 0309057188 <br> Designed by Il Maggiordomo del Web </div> ';
+ $message.= '<div style=" text-align: center; margin: 85px 0; width: 100%; color:#3c3b3b;background:#e78531;line-height: 2;">© 2015 Exemple. All Rights Reserved. Exemple s.r.l.<br>
+via B. Cellini,  2501625016 Ghedi (BS) -  P. IVA e C.F.  -  Tel:  - Fax:  <br> Designed by exemple</div> ';
  $message.="</body></html>";
  
  mail($to,$subject,$message,$intestazioni);

@@ -9,7 +9,7 @@
  $intestazioni  = "MIME-Version: 1.0" . PHP_EOL;
  $intestazioni .= "Content-Type: text/html; charset=ISO-8859-1" . PHP_EOL;
 //intestazione per il mittente
- $intestazioni .= "From: La rosa service <info@larosaservice.it>" . PHP_EOL;
+ $intestazioni .= "From: La rosa service <info@exemple.it>" . PHP_EOL;
  /*messaggio*/
 
  $message='
@@ -27,8 +27,8 @@ $message.='
 <!--logo-->
 <div style="display:block;margin:0 auto;padding:60px 0;text-align:center" align="center">
     <div style="display:block;margin:0 auto;text-align:center" align="center">
-       <a href="http://www.larosaservice.it/" id="gkLogo">
-       <img src="http://preventivo.larosaservice.it/images/Loghi/Service_catering.png" alt="Catering la Rosa Service | Location per un matrimonio perfetto" style="display:inline-block;min-height:80px" height="80" >
+       <a href="http://www.exemple.it/" id="gkLogo">
+       <img src="http://preventivo.exemple.it/images/Loghi/Service_catering.png" alt="Catering exemple | Location per un matrimonio perfetto" style="display:inline-block;min-height:80px" height="80" >
        </a>
    </div>    
 </div>';
@@ -259,13 +259,12 @@ $message.='
            </a>
          </div>
          <div style="margin:10px 0">
-            2015 LA ROSA SERVICE. ALL RIGHTS RESERVED. LA ROSA SERVICE S.R.L.
+            2015 exemple. ALL RIGHTS RESERVED. exemple S.R.L.
          </div>
          <div style="border:1px #586a72 solid;display:block;margin:30px auto 30px auto;width:80px" width="80"></div>
          <div style="display:block;line-height:18px;text-align:center;width:100%" align="center" width="100%">
            <p>
-            VIA B. CELLINI, 25016 GHEDI (BS) - P. IVA E C.F. 02879710982 - TEL: 3464125498 E FAX: 0309057188
-            <br>Designed by <a href="http://www.ilmaggiordomodelweb.it/" target="_blank"> Il Maggiordomo del Web </a>
+            
            </p>
 
          </div>

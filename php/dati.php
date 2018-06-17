@@ -5,13 +5,13 @@ $email2 = $_POST['email1'];
 $cognome2 = $_POST['cognome1'];
 $indirizzo2 = $_POST['indirizzo1'];
 $cell2 = $_POST['cell1'];
-$to = "info@larosaservice.it";
+$to = "info@exemple.it";
 
 
  $intestazioni  = "MIME-Version: 1.0" . PHP_EOL;
  $intestazioni .= "Content-Type: text/html; charset=ISO-8859-1" . PHP_EOL;
 //intestazione per il mittente
- $intestazioni .= "From: La rosa service <info@larosaservice.it>" . PHP_EOL;
+ $intestazioni .= "From: La rosa service <info@exemple.it>" . PHP_EOL;
  $subject= "Nuovo utente Preventivo";
  /*messaggio*/
  

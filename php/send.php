@@ -1,6 +1,6 @@
  <?php 
- $to= "assistenza@ilmaggiordomodelweb.it"; $subject = "Preventivo";
- $to2= "info@larosaservice.it";
+ $to= "exemple@exemple.it"; $subject = "Preventivo";
+ $to2= "info@exemple.it";
 include('variable.php');
 include('message.php');
 mail($to,$subject,$message,$intestazioni);
@@ -23,8 +23,8 @@ mail($to2,$subject,$message,$intestazioni);
 <!--logo-->
 <div style="display:block;margin:0 auto;padding:60px 0;text-align:center" align="center">
     <div style="display:block;margin:0 auto;text-align:center" align="center">
-       <a href="http://www.larosaservice.it/" id="gkLogo">
-       <img src="http://preventivo.larosaservice.it/images/Loghi/Service_catering.png" alt="Catering la Rosa Service | Location per un matrimonio perfetto" style="display:inline-block;min-height:80px" height="80" >
+       <a href="http://www.exemple.it/" id="gkLogo">
+       <img src="http://preventivo.exemple.it/images/Loghi/Service_catering.png" alt="Catering la Rosa Service | Location per un matrimonio perfetto" style="display:inline-block;min-height:80px" height="80" >
        </a>
    </div>    
 </div>
@@ -188,22 +188,20 @@ Le riportiamo in seguito il preventivo degli articoli da lei selezionati:
   <!--Footer-->  
     <div style="color:#586a72;display:block;font-size:13px;margin:0 auto;padding:40px 0;text-align:center" align="center">
            <div>
-           <a href="https://www.google.it/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi9nIW70L3NAhWEPxoKHZuMDBoQFggfMAA&url=http%3A%2F%2Fwww.larosaservice.it%2F&usg=AFQjCNHbH5LX55lPn3ZKILDltG9-vBfC4w&sig2=xfrT0fWsrmVrUewdqOQjUg" style="color:#1a9bdb;font-weight:400;margin:5px;text-decoration:none" target="_blank">larosaservice.it</a>
+           <a href="https://www.google.it/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi9nIW70L3NAhWEPxoKHZuMDBoQFggfMAA&url=http%3A%2F%2Fwww.larosaservice.it%2F&usg=AFQjCNHbH5LX55lPn3ZKILDltG9-vBfC4w&sig2=xfrT0fWsrmVrUewdqOQjUg" style="color:#1a9bdb;font-weight:400;margin:5px;text-decoration:none" target="_blank">exemple.it</a>
            <span style="margin:5px"></span>
            
              <span style="margin:5px"></span>
-           <a href="https://www.facebook.com/larosaservicesrl/?fref=ts" style="color:#1a9bdb;font-weight:400;margin:5px;text-decoration:none" target="_blank">
+           <a href="https://www.facebook.com/exemple/?fref=ts" style="color:#1a9bdb;font-weight:400;margin:5px;text-decoration:none" target="_blank">
                Facebook
            </a>
          </div>
          <div style="margin:10px 0">
-            2015 LA ROSA SERVICE. ALL RIGHTS RESERVED. LA ROSA SERVICE S.R.L.
+            2015 LA ROSA SERVICE. ALL RIGHTS RESERVED. exemple S.R.L.
          </div>
          <div style="border:1px #586a72 solid;display:block;margin:30px auto 30px auto;width:80px" width="80"></div>
          <div style="display:block;line-height:18px;text-align:center;width:100%" align="center" width="100%">
            <p>
-            VIA B. CELLINI, 25016 GHEDI (BS) - P. IVA E C.F. 02879710982 - TEL: 3464125498 E FAX: 0309057188
-            <br>DESIGNED BY IL MAGGIORDOMO DEL WEB
            </p>
 
          </div>
