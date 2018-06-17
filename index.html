@@ -1,0 +1,586 @@
+<html>
+<head>
+<title>La rosa service | Preventivo Catering</title>
+<meta charset="UTF-8">
+<meta name="description" content="La Rosa Service ti offre la possibilità di creare il tuo preventivo comodamente a casa!">
+<meta name="keywords" content="Preventivo, Matrimonio, Evento matrimonio, Sposi, Sposarsi, La Rosa Service, Preventivo Online, Preventivo Matrimonio Online">
+<meta name="author" content="Il Maggiordomo Del Web - Marco Acquaviva">
+
+<!--including css file here--->
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    
+<!--including Javascript file here--->
+<script type ="text/javascript" src="js/multi_step_form.js"></script>
+<script type ="text/javascript" src="js/DisplayPrice.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript"> 
+
+/*function stopRKey(evt) { 
+  var evt = (evt) ? evt : ((event) ? event : null); 
+  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+} 
+
+document.onkeypress = stopRKey; */
+    window.addEventListener('keydown', function (event) {
+
+    // if the keyCode is 1e ( enter key was pressed )
+    if (event.keyCode === 13) {
+
+        // prevent default behaviour
+        event.preventDefault();
+
+        return false;
+    }
+
+});
+
+</script>
+</head>
+<body>
+<div class="content">
+    <div id="boxlogo">
+    <a href="http://www.larosaservice.it/" >
+        <img src="http://preventivo.larosaservice.it/images/Loghi/Service_catering.png" id="logo" alt="Catering la Rosa Service | Location per un matrimonio perfetto">
+     </a>
+    </div>
+    <div id="boxhome">
+        <a style="display:block;text-decoration:none;"href="http://www.larosaservice.it/"><span id="home"><i class="fa fa-home" aria-hidden="true"></i> Home </span></a>
+    </div>
+<!-- multistep form -->
+<div  class="main">
+<div id="boxform">
+<form id="preventivo" class="regform" action="php/send.php" method ="post" name="preventivo">
+	<!-- progressbar -->
+	<ul id="progressbar">
+        
+        <li id="active1"><i id="active1" class="fa fa-circle" aria-hidden="true"></i></li>
+		<li id="active2"><i id="active2" class="fa fa-circle" aria-hidden="true"></i></li>
+		<li id="active3"><i id="active3" class="fa fa-circle" aria-hidden="true"></i></li>
+		<li id="active4"><i id="active4" class="fa fa-circle" aria-hidden="true"></i></li>
+		<li id="active5"><i id="active5" class="fa fa-circle" aria-hidden="true"></i></li>
+        <li id="active6"><i id="active6" class="fa fa-circle" aria-hidden="true"></i></li>
+        
+        <!--<li id="active1">Dati Anagrafici</li>
+		<li id="active2">Location</li>
+		<li id="active3">Allestimenti</li>
+		<li id="active4">Men&ugrave;</li>
+		<li id="active5">Extra</li>
+		<li id="active6">Calcolo</li> -->
+	</ul>
+	
+<!-- fieldsets -->
+	<fieldset id="first">
+		<h2 class="title">Preventivo</h2>
+		<p class="subtitle">Step 1</p>
+		<input id="nome" type="text" class="text_field" name="nome" placeholder="Nome" value="" /><br/>
+		<input id="cognome" type="text" class="text_field" name="cognome" placeholder="Cognome" value=""/><br/>
+		<input id="email" type="text" class="text_field" name="email" placeholder="Email" value=""/><br/>
+		<input id="cell" type="text" class="text_field" name="cell" placeholder="Cellulare" value=""/><br/>
+		<input id="indirizzo" type="text" class="text_field" name="indirizzo" placeholder="indirizzo" value=""/><br/>
+		<p id="dati"> Proseguendo dichiari di accettare la normativa sul <a id="datiperso" target="_blank" href="http://www.larosaservice.it/index.php?option=com_k2&view=item&layout=item&id=340"> trattamento dei dati personali</a>.</p>
+<!--button-->
+		<div>
+		<input type="button" id="next_btn1" value="Next" onclick="next_step1()" />
+		</div>
+	</fieldset>
+	<fieldset id="second">
+		<h2 class="title">Location</h2>
+		<p class="subtitle">Step 2</p>
+<!--location-->
+		<div>
+		<select id="place" name="place" class="options" onchange="prezzolocation()">
+		<option value="0" name="luogo">--Seleziona la location--</option>
+		<option value="Martino" name="Martino">Palazzo Cigola Martinoni</option>
+		<option value="Pieve" name="Pieve">Palazzo Monti della pieve</option>
+		<option value="MazzucchelliR" name="MazzucchelliR">Villa Mazzucchelli(Reale)</option>
+		<option value="MazzucchelliM" name="MazzucchelliM">Villa Mazzucchelli(Museo)</option>
+		<option value="Sigurta" name="Sigurta">Villa Sigurt&agrave;</option>
+		<option value="Corte" name="Corte">Corte cola </option>
+		</select><br/>
+		<p class="prezzo" id="valore"> </p>
+		<input type="hidden" value="" name="h_valore" id="h_valore">
+		<input type="hidden" value="" name="n_valore" id="n_valore">
+		</div>
+		<!--<p class="f_text"> Data:</p>-->
+		<input type="text" name="data" class="text_field" placeholder="Data dell'evento" value="" /><br/>
+<!--button-->
+		<div>
+		<input type="button" id="pre_btn1" value="Previous" onclick="prev_step1()"/>
+		<input type="button" name="next" id="next_btn2" value="Next" onclick="next_step2()" />
+		</div>
+	</fieldset>
+	<fieldset id="third">
+		<h2 class="title">Allestimenti</h2>
+		<p class="subtitle">Step 3</p>
+<!--tavoli-->
+		<div>
+		<select name="tavoli" id="s_tavoli" class="options" onchange="prezzotavoli()">
+		<option value="0" name="notavolo">--Seleziona il tavolo--</option>
+		<option value="8" name="8persone">8 persone</option>
+		<option value="10" name="10persone">10 persone</option>
+		<option value="reale" name="reale">Reale</option>
+		</select><br/>
+		<p class="prezzo" id="valore_tavolo"> </p>
+        <input type="hidden" value="" name="h_tavoli" id="h_tavoli">
+		<input type="hidden" value="" name="n_tavoli" id="n_tavoli">
+		<input type="hidden" value="" name="v_tavoli" id="v_tavoli">
+		</div>
+<!--tovagliato-->
+		<div>
+		<select name="tovaglia" id="s_tovaglia" class="options" onchange="prezzotovaglia()">
+		<option value="0" name="notovaglia">--Seleziona la tovaglia--</option>
+		<option value="lino" name="lino">Tovaglia Bianca Lino e cotone</option>
+		<option value="avorio" name="avorio">Tovaglia avorio Damascato</option>
+		<option value="scelta" name="scelta">Tovaglia colore a scelta</option>
+		</select><br/>
+		<p class="prezzo" id="valore_tovaglia"> </p>
+        <input type="hidden" value="" name="h_tovaglia" id="h_tovaglia">
+		<input type="hidden" value="" name="n_tovaglia" id="n_tovaglia">
+		</div>
+<!--sottopiatti-->
+		<div>
+		<select name="sottopiatti" id="s_sotto" class="options" onchange="prezzosotto()">
+		<option value="0" name="notovaglia">--Seleziona il sottopiatto--</option>
+		<option value="vetro" name="vetro">Sottopiatto in vetro bordo liscio</option>
+		<option value="ceramica" name="ceramica">Sottopiatto in ceramica bianca</option>
+		<option value="satina" name="satina">Sottopiatto in vetro bordo satinato</option>
+		</select><br/>
+		<p class="prezzo" id="valore_sotto"> </p>
+        <input type="hidden" value="" name="h_sotto" id="h_sotto">
+		<input type="hidden" value="" name="n_sotto" id="n_sotto">
+		</div>
+<!--piatti-->
+		<div>
+		<select name="piatti" id="s_piatti" class="options" onchange="prezzopiatti()">
+		<option value="0" name="posate">--Seleziona i piatti--</option>
+		<option value="ceramica" name="ceramica">Piatti in ceramica tondi</option>
+		<option value="quadrati" name="quadrati">Piatti quadrati bianchi</option>
+		</select><br/>
+		<p class="prezzo" id="valore_piatti"> </p>
+        <input type="hidden" value="" name="h_piatti" id="h_piatti">
+		<input type="hidden" value="" name="n_piatti" id="n_piatti">
+		</div>
+<!--bicchieri acqua-->
+		<div>
+		<select name="bicchieri acqua" id="s_bicchieri" class="options" onchange="prezzobicchieri()">
+		<option value="0" name="bicchieri">--Seleziona il bicchiere per l'acqua--</option>
+		<option value="tumbler" name="tumbler">Bicchiere Tumbler</option>
+		<option value="ideal" name="ideal">Bicchiere Tumbler Ideal Harmony</option>
+		<option value="cortina" name="cortina">Bicchiere Tumbler Cortina</option>
+		</select><br/>
+		<p class="prezzo" id="valore_bicchieri"> </p>
+        <input type="hidden" value="" name="h_bicchieri" id="h_bicchieri">
+		<input type="hidden" value="" name="n_bicchieri" id="n_bicchieri">
+		</div>
+<!--bicchieri vino bianco-->
+		<div>
+		<select name="bicchieri vino bianco" id="s_bvino" class="options" onchange="prezzobvino()">
+		<option value="0" name="bvino">--Seleziona il bicchiere per il vino bianco--</option>
+		<option value="Cabernet" name="Cabernet">Calice cristallo Cabernet</option>
+		<option value="Sandra" name="Sandra">Calice cristallo Sandra</option>
+		</select><br/>
+		<p class="prezzo" id="valore_bicchieri"> </p>
+        <input type="hidden" value="" name="h_bvino" id="h_bvino">
+		<input type="hidden" value="" name="n_bvino" id="n_bvino">
+		</div>
+<!--bicchieri vino rosso-->
+		<div>
+		<select name="bicchieri vino rosso" id="s_rvino" class="options" onchange="prezzorvino()">
+		<option value="0" name="bvino">--Seleziona il bicchiere per il vino rosso--</option>
+		<option value="Baloon" name="Cabernet">Bicchiere Baloon</option>
+		<option value="Sandra" name="Sandra">Calice cristallo Sandra</option>
+		</select><br/>
+		<p class="prezzo" id="valore_bicchieri"> </p>
+        <input type="hidden" value="" name="h_rvino" id="h_rvino">
+		<input type="hidden" value="" name="n_rvino" id="n_rvino">
+		</div>
+<!--bicchieri Flute-->
+		<div>
+		<select name="bicchieri Flute" id="s_flute" class="options" onchange="prezzoflute()">
+		<option value="0" name="bvino">--Seleziona il bicchiere Flute--</option>
+		<option value="Tulipano" name="Tulipano">Flute Tulipano</option>
+		<option value="Franciacorta" name="Franciacorta">Flute cristallo Franciacorta</option>
+		<option value="Sandra" name="Sandra">Flute cristallo Sandra</option>
+		</select><br/>
+		<p class="prezzo" id="valore_flute"> </p>
+        <input type="hidden" value="" name="h_flute" id="h_flute">
+		<input type="hidden" value="" name="n_flute" id="n_flute">
+		</div>
+<!--sedie-->
+		<div>
+		<select name="sedie" id="s_sedie" class="options" onchange="prezzosedie()">
+		<option value="0" name="sedie">--Seleziona la sedia--</option>
+		<option value="tb" name="Thonet Bianca">Sedia Thonet vestina bianca</option>
+		<option value="ta" name="Thonet Avorio">Sedia Thonet vestina avorio</option>
+		<option value="chiavarina" name="Chiavarina Bianca">Sedia chiavarina bianca</option>
+		<option value="parigina" name="Parigina decape">Sedia parigina decap&egrave; </option>
+		</select><br/>
+		<p class="prezzo" id="valore_sedia"> </p>
+        <input type="hidden" value="" name="h_sedia" id="h_sedia">
+		<input type="hidden" value="" name="n_sedia" id="n_sedia">
+		</div>
+<!--posate
+		<div>
+		<select name="posate" id="s_posate" class="options" onchange="prezzoposate()">
+		<option value="0" name="posate">--Seleziona le posate--</option>
+		<option value="10" name="argento">Argento</option>
+		<option value="9" name="oro">Oro</option>
+		</select><br/>
+		<p class="prezzo" id="valore_posate"> </p>
+        <input type="hidden" value="" name="h_posate" id="h_posate">
+		</div>
+-->
+
+<!--button-->
+		<div>
+		<input type="button" id="pre_btn2" value="Previous" onclick="prev_step2()"/>
+		<input type="button" name="next" id="next_btn3" value="Next" onclick="next_step3()" />
+		</div>
+	</fieldset>
+	<fieldset id="four">
+		<h2 class="title">Men&ugrave;</h2>
+		<p class="subtitle">Step 4</p>
+<!--menu-->
+		<div>
+		<select id="s_menu" class="options" onchange="prezzomenu()">
+		<option id="m_zero" value="0" name="menu">--Seleziona il Men&ugrave;--</option>
+		<option id="m_classico" value="classico" name="classico">Men&ugrave; Classico</option>
+		<option id="m_isole" value="isole" name="isole">Men&ugrave; Isole</option>
+		</select><br/>
+		<p class="prezzo" id="valore_menu"> </p>
+        <input type="hidden" value=" " name="h_menu" id="h_menu">
+		<input type="hidden" value="" name="n_menu" id="n_menu">
+		</div>
+<!--button-->
+		<div>
+		<input type="button" id="pre_btn2" value="Previous" onclick="prev_step3()"/>
+		<input type="button" name="next" id="next_btn3" value="Next" onclick="next_step4()" />
+		</div>
+	</fieldset>
+	<fieldset id="five">
+		<h2 class="title">Extra</h2>
+		<p class="subtitle">Step 5</p>
+		<div class="radiobox">
+		<p id="ry" class="radiotext">S&igrave</p>
+		<p id="rn" class="radiotext">No</p>
+		</div>
+<!--open bar-->
+		<div>
+		<p class="f_text" id="baby">Open bar: </p> 
+		<div class="radiobox">
+		<input onClick="prezzoopen()" id="yop" type="radio" name="bitop" value="y">  
+		<input onclick="prezzoopen()" id="nop" type="radio" name="bitop" value="n"></div><br><br>
+		<p class="prezzo" id="valore_open"> </p>
+        <input type="hidden" value="" name="h_open" id="h_open">
+		<input type="hidden" value="" name="n_open" id="n_open">
+		</div>
+<!--ombrellone-->
+		<div>
+		<p class="f_text" id="baby">Ombrellone 3x4: </p> 
+		<div class="radiobox">
+		<input onClick="prezzoombra()" id="yo" type="radio" name="bito" value="y"> 
+		<input onclick="prezzoombra()" id="no" type="radio" name="bito" value="n"></div><br><br>
+		<input placeholder=" Quantit&agrave;" name="q_ombra" onchange="prezzoombra()" id="q_ombra" type="number" value="">
+		<p class="prezzo" id="valore_ombra"> </p>
+        <input type="hidden" value="" name="h_ombra" id="h_ombra">
+		<input type="hidden" value="" name="n_ombra" id="n_ombra">
+		<input type="hidden" value="" name="o_ombra" id="o_ombra">
+		</div>
+<!--divanetto-->
+		<div>
+		<p class="f_text" id="baby">Divanetto bancali: </p> 
+		<div class="radiobox">
+		<input onClick="prezzodivano()" id="yd" type="radio" name="bitd" value="y"> 
+		<input onclick="prezzodivano()" id="nd" type="radio" name="bitd" value="n"></div><br><br>
+		<input placeholder=" Quantit&agrave;" name="q_divano" onchange="prezzodivano()" id="q_divano" type="number" value="">
+		<p class="prezzo" id="valore_divano"> </p>
+        <input type="hidden" value="" name="h_divano" id="h_divano">
+		<input type="hidden" value="" name="n_divano" id="n_divano">
+		<input type="hidden" value="" name="o_divano" id="o_divano">
+		</div>
+<!--poufquadrato-->
+		<div>
+		<p class="f_text" id="baby">Pouf quadrato: </p> 
+		<div class="radiobox">
+		<input onClick="prezzopoufq()" id="ypq" type="radio" name="bitpq" value="y"> 
+		<input onclick="prezzopoufq()" id="npq" type="radio" name="bitpq" value="n"></div><br><br>
+		<input placeholder=" Quantit&agrave;" name="q_poufq" onchange="prezzopoufq()" id="q_poufq" type="number" value="">
+		<p class="prezzo" id="valore_poufq"> </p>
+        <input type="hidden" value="" name="h_poufq" id="h_poufq">
+		<input type="hidden" value="" name="n_poufq" id="n_poufq">
+		<input type="hidden" value="" name="o_poufq" id="o_poufq">
+		</div>
+<!--poufrettangolare-->
+		<div>
+		<p class="f_text" id="baby">Pouf rettangolare ecopelle: </p> 
+		<div class="radiobox">
+		<input onClick="prezzopoufr()" id="ypr" type="radio" name="bitpr" value="y"> 
+		<input onclick="prezzopoufr()" id="npr" type="radio" name="bitpr" value="n"></div><br><br>
+		<input placeholder=" Quantit&agrave;" name="q_poufr" onchange="prezzopoufr()" id="q_poufr" type="number" value="">
+		<p class="prezzo" id="valore_poufr"> </p>
+        <input type="hidden" value="" name="h_poufr" id="h_poufr">
+		<input type="hidden" value="" name="n_poufr" id="n_poufr">
+		<input type="hidden" value="" name="o_poufr" id="o_poufr">
+		</div>
+<!--isolatonda-->
+<!--		<div>
+		<p class="f_text" id="baby">Isola tonda completa: </p> 
+		<div class="radiobox">
+		<input onClick="prezzoisola()" id="yi" type="radio" name="biti" value="y">  
+		<input onclick="prezzoisola()" id="ni" type="radio" name="biti" value="n"></div><br><br>
+		<input placeholder=" Quantit&agrave;" name="q_isola" onchange="prezzoisola()" id="q_isola" type="number" value="">
+		<p class="prezzo" id="valore_isola"> </p>
+        <input type="hidden" value="" name="h_pisola" id="h_pisola">
+		<input type="hidden" value="" name="n_pisola" id="n_pisola">
+		<input type="hidden" value="" name="o_isola" id="o_isola">
+		</div> -->
+<!--Confettata-->
+		<div>
+		<p class="f_text" id="baby">Tavolo confettata: </p> 
+		<div class="radiobox">
+		<input onClick="prezzoconf()" id="yc" type="radio" name="bitc" value="y">  
+		<input onclick="prezzoconf()" id="nc" type="radio" name="bitc" value="n"></div><br><br>
+		<input placeholder=" Quantit&agrave;" name="q_conf" onchange="prezzoconf()" id="q_conf" type="number" value="">
+		<p class="prezzo" id="valore_conf"> </p>
+        <input type="hidden" value="" name="h_pconf" id="h_pconf">
+		<input type="hidden" value="" name="n_pconf" id="n_pconf">
+		<input type="hidden" value="" name="o_conf" id="o_conf">
+		</div>
+<!--Fuochi d'artificio-->
+		<div>
+		<p class="f_text" id="baby">Fuochi d'artificio: </p> 
+		<div class="radiobox">
+		<input onClick="prezzofire()" id="yf" type="radio" name="bitf" value="y">  
+		<input onclick="prezzofire()" id="nf" type="radio" name="bitf" value="n"></div><br><br>
+		<p class="prezzo" id="valore_conf"> </p>
+        <input type="hidden" value="" name="h_pfire" id="h_pfire">
+		<input type="hidden" value="" name="n_pfire" id="n_pfire">
+		<input type="hidden" value="" name="o_fire" id="o_fire">
+		</div>
+		
+<!--babysitter-->
+		<div>
+		<p class="f_text" id="baby">Babysitter: </p> 
+		<div class="radiobox">
+		<input onClick="prezzobaby()" id="yb" type="radio" name="bit" value="y"><input onclick="prezzobaby()" id="nb" type="radio" name="bit" value="n"></div><br><br>
+		<input placeholder=" Ore Babysitter" name="orebaby" onchange="prezzobaby()" id="q_baby" type="number" value="">
+		<p class="prezzo" id="valore_baby"> </p>
+        <input type="hidden" value="" name="h_baby" id="h_baby">
+		<input type="hidden" value="" name="n_baby" id="n_baby">
+		<input type="hidden" value="" name="o_baby" id="o_baby">
+		</div>
+<!--auto-->
+		<div>
+		<p class="f_text" id="baby">Automobile: </p> 
+		<div class="radiobox">
+		<input onClick="prezzoauto()" id="ya" type="radio" name="bita" value="y"><input onclick="prezzoauto()" id="na" type="radio" name="bita" value="n"></div>
+		<br><br>
+		<select name="s_auto" id="s_auto" class="options" onchange="prezzoauto()" >
+		<option value="0" name="auto">--Seleziona l'auto--</option>
+		<option value="M" name="spider">Mercedes 250C</option>
+		<option value="F" name="fiat">Fiat 1100 E</option>
+		<option value="C" name="citroen">Citro&euml;n 2CV</option>
+		</select><br/>
+		<select name="km_auto" id="km_auto" class="options" onchange="prezzoauto()" >
+		<option value="0" name="auto">--Seleziona i km da percorrere--</option>
+		<option value="1" name="50">0-50</option>
+		<option value="2" name="100">50-100</option>
+		<option value="3" name="150">100-150</option>
+		<option value="4" name="200">150-200</option>
+		</select>
+		<!--<p class="f_text"></p> <input placeholder=" Ore Noleggio"onchange="prezzoauto()" id="q_auto" type="number" value="">-->
+		<p class="prezzo" id="valore_auto"> </p>
+        <input type="hidden" value="" name="h_auto" id="h_auto">
+		<input type="hidden" value="" name="n_auto" id="n_auto">
+		<input type="hidden" value="" name="kmauto" id="kmauto">
+		</div>
+<!--fiori
+		<div>
+		<select id="s_fiori" class="options" onchange="prezzofiori()" >
+		<option value="0" name="fiori">--Seleziona i fiori--</option>
+		<option value="40" name="rose">Rose</option>
+		<option value="50" name="margherite">Margherite</option>
+		</select><br/>
+		<p class="f_text"></p> <input placeholder=" Quantit&agrave;" onchange="prezzofiori()" id="q_fiori" type="number" value="">
+		<p class="prezzo" id="valore_fiori"> </p>
+        <input type="hidden" value="" name="h_fiori" id="h_fiori">
+		</div>-->
+<!--button-->		
+		<div>
+		<input type="button" id="pre_btn2" value="Previous" onclick="prev_step4()"/>
+		<input type="button" name="next" id="next_btn3" value="Next" onclick="next_step5()" />
+		</div>
+	</fieldset>
+	<fieldset id="six">
+		<h2 class="title">Calcolo</h2>
+		<p class="subtitle">Step 6</p><!--invitati-->
+		<p> N. Invitati </p> <input onchange="totale()" type="number" name="invitati" id="invitati" value="">
+		<input type="hidden" value="" name="h_invitati" id="h_invitati">
+<!--button-->
+		<div>
+		<input type="button" id="pre_btn2" value="Previous" onclick="prev_step5()"/>
+		<input type="submit" class="submit_btn" value="Submit" />
+		</div>
+	</fieldset>
+    <div id="totale">
+<p class="totale" id="valore_totale"> </p> 
+<input type="hidden" value="" name="h_totale" id="h_totale"> 
+</div>
+</form>
+    </div>
+		<div id="img-menu">
+		<img class="img-left" id="menu-zero" src="">
+		<!--Martino Carousel-->
+<div style="max-width:500px" class="img-left" id="PalazzoMartino">
+  <img class="Martino" src="images/Location/Palazzo Cigola Martinoni/CigolaMartinoni01.jpg" style="width:100%">
+  <img class="Martino" src="images/Location/Palazzo Cigola Martinoni/CigolaMartinoni02.jpg" style="width:100%">
+  <img class="Martino" src="images/Location/Palazzo Cigola Martinoni/CigolaMartinoni03.jpg" style="width:100%">
+  <img class="Martino" src="images/Location/Palazzo Cigola Martinoni/CigolaMartinoni04.jpg" style="width:100%">
+</div>
+
+<script>
+var IndexMartino = 0;
+Martino();
+
+function Martino() {
+    var i;
+    var x = document.getElementsByClassName("Martino");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    IndexMartino++;
+    if (IndexMartino > x.length) {IndexMartino = 1}
+    x[IndexMartino-1].style.display = "block";
+    setTimeout(Martino, 3000); // Change image every 2 seconds
+}
+</script>
+
+<!--Pieve Carousel-->
+<div style="max-width:500px" class="img-left" id="MontidellaPieve">
+  <img class="Pieve" src="images/Location/Palazzo Monti della Pieve/MontidellaPieve01.jpg" style="width:100%">
+  <img class="Pieve" src="images/Location/Palazzo Monti della Pieve/MontidellaPieve02.jpg" style="width:100%">
+  <img class="Pieve" src="images/Location/Palazzo Monti della Pieve/MontidellaPieve03.jpg" style="width:100%">
+  <img class="Pieve" src="images/Location/Palazzo Monti della Pieve/MontidellaPieve04.jpg" style="width:100%">
+</div>
+
+<script>
+var IndexPieve = 0;
+Pieve();
+
+function Pieve() {
+    var i;
+    var x = document.getElementsByClassName("Pieve");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    IndexPieve++;
+    if (IndexPieve > x.length) {IndexPieve = 1}
+    x[IndexPieve-1].style.display = "block";
+    setTimeout(Pieve, 3000); // Change image every 2 seconds
+}
+</script>
+<!--Villa Mazzucchelli(Reale)-->
+<div style="max-width:500px" class="img-left" id="VillaMazzucchelliR">
+  <img class="MazzucchelliR" src="images/Location/Villa Mazzucchelli/Mazzucchelli01.jpg" style="width:100%">
+  <img class="MazzucchelliR" src="images/Location/Villa Mazzucchelli/Mazzucchelli02.jpg" style="width:100%">
+  <img class="MazzucchelliR" src="images/Location/Villa Mazzucchelli/Mazzucchelli03.jpg" style="width:100%">
+  <img class="MazzucchelliR" src="images/Location/Villa Mazzucchelli/Mazzucchelli04.jpg" style="width:100%">
+</div>
+
+<script>
+var IndexMazzucchelliR = 0;
+MazzucchelliR();
+
+function MazzucchelliR() {
+    var i;
+    var x = document.getElementsByClassName("MazzucchelliR");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    IndexMazzucchelliR++;
+    if (IndexMazzucchelliR > x.length) {IndexMazzucchelliR = 1}
+    x[IndexMazzucchelliR-1].style.display = "block";
+    setTimeout(MazzucchelliR, 3000); // Change image every 3 seconds
+}
+</script>
+<!--Villa Mazzucchelli(Museo)-->
+<div style="max-width:500px" class="img-left" id="VillaMazzucchelliM">
+  <img class="Mazzucchelli" src="images/Location/Villa Mazzucchelli/Mazzucchelli01.jpg" style="width:100%">
+  <img class="Mazzucchelli" src="images/Location/Villa Mazzucchelli/Mazzucchelli02.jpg" style="width:100%">
+  <img class="Mazzucchelli" src="images/Location/Villa Mazzucchelli/Mazzucchelli03.jpg" style="width:100%">
+  <img class="Mazzucchelli" src="images/Location/Villa Mazzucchelli/Mazzucchelli04.jpg" style="width:100%">
+</div>
+
+<script>
+var IndexMazzucchelli = 0;
+Mazzucchelli();
+
+function Mazzucchelli() {
+    var i;
+    var x = document.getElementsByClassName("Mazzucchelli");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    IndexMazzucchelli++;
+    if (IndexMazzucchelli > x.length) {IndexMazzucchelli = 1}
+    x[IndexMazzucchelli-1].style.display = "block";
+    setTimeout(Mazzucchelli, 3000); // Change image every 3 seconds
+}
+</script>
+<!--Villa Sigurta-->
+<div style="max-width:500px" class="img-left" id="villasigurta">
+  <img class="Sigurta" src="images/Location/Villa Sigurta/Sigurta01.jpg" style="width:100%">
+  <img class="Sigurta" src="images/Location/Villa Sigurta/Sigurta02.jpg" style="width:100%">
+  <img class="Sigurta" src="images/Location/Villa Sigurta/Sigurta03.jpg" style="width:100%">
+  <img class="Sigurta" src="images/Location/Villa Sigurta/Sigurta04.jpg" style="width:100%">
+</div>
+
+<script>
+var IndexSigurta = 0;
+Sigurta();
+
+function Sigurta() {
+    var i;
+    var x = document.getElementsByClassName("Sigurta");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    IndexSigurta++;
+    if (IndexSigurta > x.length) {IndexSigurta = 1}
+    x[IndexSigurta-1].style.display = "block";
+    setTimeout(Sigurta, 3000); // Change image every 2 seconds
+}
+</script>
+<!--Corte Cola-->
+<div style="max-width:500px" class="img-left" id="cortecola">
+  <img class="Cola" src="images/Location/Corte Cola/CorteCola01.jpg" style="width:100%">
+  <img class="Cola" src="images/Location/Corte Cola/CorteCola02.jpg" style="width:100%">
+  <img class="Cola" src="images/Location/Corte Cola/CorteCola03.jpg" style="width:100%">
+  <img class="Cola" src="images/Location/Corte Cola/CorteCola04.jpg" style="width:100%">
+</div>
+
+<script>
+var IndexCola = 0;
+Cola();
+
+function Cola() {
+    var i;
+    var x = document.getElementsByClassName("Cola");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    IndexCola++;
+    if (IndexCola > x.length) {IndexCola = 1}
+    x[IndexCola-1].style.display = "block";
+    setTimeout(Cola, 3000); // Change image every 2 seconds
+}
+</script>
+</div><!--chiusura div img--->
+</div>
+
+</div>
+
+</body>
+</html>

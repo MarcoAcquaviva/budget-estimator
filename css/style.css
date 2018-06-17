@@ -1,0 +1,237 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif); /* to import google font style */ /*normalize*/
+body, html{
+	margin: 0 auto;	padding: 0 ;
+}
+
+.content{   
+	width: 100%;
+	/* margin: 20px auto; */
+	height: 100%;    
+	padding: 0;    
+	margin: 0 auto;	
+}	
+
+.main{	
+	float:left;	
+	width: 100%;	
+	margin-top:80px;	
+	position: relative;	
+}
+
+/*form*/
+#preventivo{	
+	width: 541px;
+    margin: 0 auto;
+}
+
+#preventivo div{	
+	float:left;	
+	width: 100%;
+}
+
+/*immagini*/
+div#img-menu {    
+	position: absolute;    
+	top: 0;    
+	left: 0;    
+	float: left;	
+	width: 36%;
+}
+
+.img-left {    
+	display: block;    
+	max-width: 100%;    
+	position: absolute;    
+	top: 72px;    
+	border-radius:5px;	
+	box-shadow: 3px 3px 25px 1px gray;    
+	margin-left: 45px;    
+}
+#cortecola, #villasigurta, #MontidellaPieve, #PalazzoMartino, #VillaMazzucchelliR, #VillaMazzucchelliM{
+	display: none;
+}
+
+/*barra in alto*/
+#progressbar{	
+	margin: 0;
+    margin-left: 19%;
+    font-size: 18px;
+}
+
+#logo {	
+	width: 193px;	
+	height: 66px;    
+	padding: 10;	
+}	
+
+#boxlogo {
+	width: 100%;
+    float: left;
+}
+
+#home {
+	padding: 27px;
+    font-size: 18px;
+}
+
+#boxform {
+	width: 64%;
+	float: right;
+}
+
+#boxhome {
+	width: 100%;
+    float: left;
+    margin-left: 36px;
+}
+
+#active1{	
+	color: #dd973a;	
+}	
+
+fieldset{	
+	display:none;	
+	width: 350px;	
+	padding:20px;	
+	margin-top:50px;	
+	margin-left: 85px;	
+	border-radius:5px;	
+	box-shadow: 3px 3px 25px 1px gray;	
+}
+
+#first{    
+	display:block;	
+	width: 350px;	
+	padding:20px;	
+	margin-top:50px;	
+	border-radius:5px;	
+	margin-left: 85px;	
+	box-shadow: 3px 3px 25px 1px gray;	
+}
+/*step1*/
+#dati{
+	display: block;
+    font-size: 12px;
+}
+#datiperso{
+    text-decoration: none;
+    color: #000;
+}
+/*input*/
+.radiobox{
+    float: right !important;
+    width: 23% !important;
+}	
+.radiotext {
+    float: left;
+    margin: 0 auto;
+    margin-left: -4px;
+}
+p#rn {
+    margin-left: 10px;
+}
+
+input[type=text],input[type=password],input[type=email],input[type=tel],input[type=number],input[type=date],select{	
+	width:78%;	
+	float: left;	
+	margin:10px 35px;	
+	height:40px;	
+	padding:5px;    
+	border: 2px solid #555;	
+}	
+
+input[type=radio]{
+	float:left;
+}
+
+textarea{	
+	width:100%;	
+	margin:10px 0;	
+	height:70px;	
+	padding:5px;	
+	border: 1px solid rgb(236, 176, 220);	
+	border-radius: 4px;	
+}	
+
+input[type=submit],input[type=button]{	
+	/*width: 120px;	
+	float: left;	
+	margin:15px 25px;	
+	padding: 5px;	
+	height: 40px;	
+	background-color: sienna;	
+	border: none;	
+	border-radius: 4px;	
+	color: white;	
+	font-family: 'Droid Serif', serif;*/    		
+	background: #dd973a;    
+	border: none;    
+	border-radius: 1px;    
+	color: #fff !important;    
+	width: 120px;	
+	float: left;	
+	margin:15px 25px;	
+	padding: 5px;	
+	height: 40px;	
+}
+
+input#yb {    
+	/*margin-left: 24px;    
+	margin-top: 12;*/
+}	
+
+/*ore babysitter e quantità prodotti extra*/
+#q_baby, #q_isola, #q_poufr, #q_poufq, #q_ombra, #q_divano, #q_conf, #q_fire{
+	display:none;
+}
+/*automobile*/
+#s_auto, #km_auto{
+	display: none;
+}
+
+/*text style*/	
+
+h2,p{	
+	text-align:center;	
+	font-family: 'Droid Serif', serif;	
+}	
+
+li{
+	margin-right: 8%;
+    display: inline;
+    color: #c1c5cc;		
+}
+
+/*Testo visibile*/
+
+p.f_text {    
+	float: left;	
+	margin-left: 130px;    
+	padding: 0;
+	width: 37%;
+}
+
+/*prezzo selezione*/
+
+p.prezzo {    
+	margin-left: 90px;    
+	width: 50%;	
+	margin-bottom: 15px;}
+
+/*totale*/
+
+p#valore_totale {    
+	position: absolute;    
+	margin-left: 230px;
+}
+	
+p#baby {    
+	margin-left: 50px;    
+	margin-top: 1px;
+	margin-right: 10px;
+}
+
+
+
+
+
